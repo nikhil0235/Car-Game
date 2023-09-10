@@ -96,33 +96,7 @@ function gamePlay() {
 
     car.style.top = player.y + "px";
     car.style.left = player.x + "px";
-    if (window.DeviceOrientationEvent) {
-      // Initialize the car element
-      // const car = document.getElementById('car');
-      let carPosition = 0; // Initial position of the car
-
-      // Handle device orientation changes
-      window.addEventListener('deviceorientation', handleOrientation);
-
-      function handleOrientation(event) {
-        // Get the rotation values from the event
-        const beta = event.beta; // Left to right rotation (around the x-axis)
-
-        // Calculate the car movement based on the rotation
-        const maxRotation = 45; // Maximum rotation angle for turning
-        const rotationSpeed = 5; // Speed of car rotation
-
-        // Calculate the new position of the car
-        carPosition += (beta / maxRotation) * rotationSpeed;
-
-        // Constrain the car's position to stay within the screen
-        carPosition = Math.min(100, Math.max(0, carPosition)); // Adjust as needed
-
-        // Update the car's position
-        car.style.left = carPosition + "px";
-        // car.style.left = player.x + "px";
-      }
-    } 
+    
     window.requestAnimationFrame(gamePlay);
     //console.log(player.score++);
     player.score++;
