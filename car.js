@@ -99,16 +99,7 @@ function gamePlay() {
     console.log(car.style.left);
 
 
-    let gravitySensor = new GravitySensor({ frequency: 60 });
-
-    gravitySensor.addEventListener("reading", (e) => {
-      console.log(`Gravity along the X-axis ${gravitySensor.x}`);
-      console.log(`Gravity along the Y-axis ${gravitySensor.y}`);
-      console.log(`Gravity along the Z-axis ${gravitySensor.z}`);
-      alert(gravitySensor);
-    });
     
-    gravitySensor.start();
 
     window.requestAnimationFrame(gamePlay);
     //console.log(player.score++);
@@ -186,3 +177,28 @@ function start() {
     gamearea.appendChild(othercar);
   }
 }
+
+let gravitySensor = new GravitySensor({ frequency: 60 });
+
+    gravitySensor.addEventListener("reading", (e) => {
+      console.log(`Gravity along the X-axis ${gravitySensor.x}`);
+      console.log(`Gravity along the Y-axis ${gravitySensor.y}`);
+      console.log(`Gravity along the Z-axis ${gravitySensor.z}`);
+      alert(gravitySensor);
+    });
+    
+    gravitySensor.start();
+
+window.addEventListener('devicemotion', handleMotion);
+
+      function handleMotion(event) {
+        const accelerationX = event.accelerationIncludingGravity.x;
+        const accelerationY = event.accelerationIncludingGravity.y;
+        const accelerationZ = event.accelerationIncludingGravity.z;
+
+        // Update the HTML elements with gravity data
+        document.getElementById('gravityX').textContent = `Gravity X: ${accelerationX}`;
+        document.getElementById('gravityY').textContent = `Gravity Y: ${accelerationY}`;
+        document.getElementById('gravityZ').textContent = `Gravity Z: ${accelerationZ}`;
+        alert(accelerationX,accelerationY,accelerationZ);
+      }

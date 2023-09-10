@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gravity Sensor Example</title>
+</head>
+<body>
+  <h1>Gravity Sensor Example</h1>
+  <div id="gravityX">Gravity X: </div>
+  <div id="gravityY">Gravity Y: </div>
+  <div id="gravityZ">Gravity Z: </div>
+
+  <script>
+    // Check if the device supports the necessary events
+    if (window.DeviceMotionEvent && window.DeviceOrientationEvent) {
+      // Handle device motion (acceleration/gravity) changes
+      window.addEventListener('devicemotion', handleMotion);
+
+      function handleMotion(event) {
+        const accelerationX = event.accelerationIncludingGravity.x;
+        const accelerationY = event.accelerationIncludingGravity.y;
+        const accelerationZ = event.accelerationIncludingGravity.z;
+
+        // Update the HTML elements with gravity data
+        document.getElementById('gravityX').textContent = `Gravity X: ${accelerationX}`;
+        document.getElementById('gravityY').textContent = `Gravity Y: ${accelerationY}`;
+        document.getElementById('gravityZ').textContent = `Gravity Z: ${accelerationZ}`;
+      }
+    } else {
+      // Device does not support necessary events
+      alert('Device motion and orientation events not supported on this device.');
+    }
+  </script>
+</body>
+</html>
