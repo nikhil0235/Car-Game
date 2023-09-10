@@ -96,7 +96,12 @@ function gamePlay() {
 
     car.style.top = player.y + "px";
     car.style.left = player.x + "px";
-    if (window.DeviceOrientationEvent) {
+
+
+
+
+
+    // if (window.DeviceOrientationEvent) {
       // Initialize the car element
       // const car = document.getElementById('car');
       let carPosition = 0; // Initial position of the car
@@ -122,7 +127,11 @@ function gamePlay() {
         car.style.left = carPosition + "px";
         // car.style.left = player.x + "px";
       }
-    } 
+
+
+
+
+      
     window.requestAnimationFrame(gamePlay);
     //console.log(player.score++);
     player.score++;
