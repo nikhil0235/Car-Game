@@ -9,7 +9,17 @@
 .hide {
     display: none;
 }
-
+.up,.down,.right,.left{
+    display: none;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+.up img,.left img,.right img,.down img{
+    width: 50px;
+}
 .car {
     width: 50px;
     height: 90px;
@@ -263,3 +273,83 @@ button {
     }
 
 }
+
+
+
+@media (max-width: 480px) {
+    .Score {
+        position: absolute;
+        top: 5px;
+        left: unset;
+        right:5px;
+        font-size: small;
+        width: 45%;
+        height: 80px;
+        color: white;
+        background: transparent;
+        font-weight: bolder;
+        line-height: 10px;
+    }
+    .instruct {
+        display: none;
+    }
+    .left{
+        display: inline-block;
+        position: absolute;
+        z-index: 100;
+        left: 6%;
+        top: 90%;
+        font-size: 100px;
+        color: white;
+        height: 95px !important;
+    }
+    .up{
+        display: inline-block;
+        position: absolute;
+        z-index: 100;
+        left: 43%;
+        top: 85%;
+        font-size: 80px;
+        color: white;
+        height: 80px;
+        -webkit-transform: rotate(90deg);  /* to support Safari and Android browser */
+        -ms-transform: rotate(90deg);      /* to support IE 9 */
+        transform: rotate(90deg);
+}
+    .right{
+        display: inline-block;
+        position: absolute;
+        z-index: 100;
+        left: 82%;
+        top: 90%;
+        font-size: 100px;
+        color: white;
+        -webkit-transform: rotate(180deg);
+        /*tosupportSafariandAndroidbrowser*/-ms-transform: rotate(180deg);
+        /*tosupportIE9*/transform: rotate(180deg);
+        height: 95px;
+    }
+    .down{
+        height: auto;
+        display: inline-block;
+        position: absolute;
+        z-index: 100;
+        left: 43%;
+        top: 96%;
+        font-size: 80px;
+        color: white;
+        height: 80px;
+        padding: 0;
+        margin: 0;
+        -webkit-transform: rotate(90deg);
+        /*tosupportSafariandAndroidbrowser*/-ms-transform: rotate(-90deg);
+        /*tosupportIE9*/transform: rotate(-90deg);
+}
+.up,.down,.right,.left {
+    opacity: 0.2;
+}
+/* .GameArea {
+    width: 400px;
+    height: 100vh;
+} */
+  }

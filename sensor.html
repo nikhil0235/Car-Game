@@ -10,12 +10,12 @@
   <div id="gravityZ">Gravity Z: </div>
 
   <script>
-    // Check if the device supports the necessary events
-    if (window.DeviceMotionEvent && window.DeviceOrientationEvent) {
-      // Handle device motion (acceleration/gravity) changes
-      window.addEventListener('devicemotion', handleMotion);
+    // Check if the device supports the DeviceOrientationEvent
+    if (window.DeviceOrientationEvent) {
+      // Handle device orientation changes
+      window.addEventListener('deviceorientation', handleOrientation);
 
-      function handleMotion(event) {
+      function handleOrientation(event) {
         const accelerationX = event.accelerationIncludingGravity.x;
         const accelerationY = event.accelerationIncludingGravity.y;
         const accelerationZ = event.accelerationIncludingGravity.z;
@@ -26,8 +26,8 @@
         document.getElementById('gravityZ').textContent = `Gravity Z: ${accelerationZ}`;
       }
     } else {
-      // Device does not support necessary events
-      alert('Device motion and orientation events not supported on this device.');
+      // Device does not support the DeviceOrientationEvent
+      alert('Device orientation events not supported on this device.');
     }
   </script>
 </body>

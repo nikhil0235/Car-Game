@@ -81,7 +81,7 @@ function gamePlay() {
     moveCar(car);
 
     //myaudio.loop=true;
-    if (keys.ArrowUp && player.y > road.top + 70) {
+    if (keys.ArrowUp && player.y > road.top - 70) {
       player.y -= player.speed;
     }
     if (keys.ArrowDown && player.y < road.bottom - 70) {
@@ -96,11 +96,7 @@ function gamePlay() {
 
     car.style.top = player.y + "px";
     car.style.left = player.x + "px";
-    console.log(car.style.left);
-
-
     
-
     window.requestAnimationFrame(gamePlay);
     //console.log(player.score++);
     player.score++;
@@ -178,27 +174,75 @@ function start() {
   }
 }
 
-let gravitySensor = new GravitySensor({ frequency: 60 });
 
-    gravitySensor.addEventListener("reading", (e) => {
-      console.log(`Gravity along the X-axis ${gravitySensor.x}`);
-      console.log(`Gravity along the Y-axis ${gravitySensor.y}`);
-      console.log(`Gravity along the Z-axis ${gravitySensor.z}`);
-      alert(gravitySensor);
-    });
-    
-    gravitySensor.start();
 
-window.addEventListener('devicemotion', handleMotion);
-
-      function handleMotion(event) {
-        const accelerationX = event.accelerationIncludingGravity.x;
-        const accelerationY = event.accelerationIncludingGravity.y;
-        const accelerationZ = event.accelerationIncludingGravity.z;
-
-        // Update the HTML elements with gravity data
-        document.getElementById('gravityX').textContent = `Gravity X: ${accelerationX}`;
-        document.getElementById('gravityY').textContent = `Gravity Y: ${accelerationY}`;
-        document.getElementById('gravityZ').textContent = `Gravity Z: ${accelerationZ}`;
-        alert(accelerationX,accelerationY,accelerationZ);
+document.getElementById("up").addEventListener("click", upbackground);
+document.getElementById("down").addEventListener("click", downb);
+document.getElementById("left").addEventListener("click", leftb);
+document.getElementById("right").addEventListener("click", rightb);
+function changeBackgroundColor() {
+  document.getElementById("up").style.backgroundColor = "transparent";
+  document.getElementById("up").style.opacity = "0.2";
+  }
+  function changeBackgroundColor2() {
+    document.getElementById("down").style.backgroundColor = "transparent";
+    document.getElementById("down").style.opacity = "0.2";
+    }
+    function changeBackgroundColor3() {
+      document.getElementById("left").style.backgroundColor = "transparent";
+      document.getElementById("left").style.opacity = "0.2";
       }
+      function changeBackgroundColor4() {
+        document.getElementById("right").style.backgroundColor = "transparent";
+        document.getElementById("right").style.opacity = "0.2";
+        }
+function upbackground() {
+  let road = gamearea.getBoundingClientRect();
+  if(player.start===true && player.y > road.top - 0){
+    player.y -= player.speed*5;
+    // document.getElementById("up").style.backgroundColor = "rgb(186, 186, 186)";
+    document.getElementById("up").style.opacity = "0.6";
+  }
+    
+  let car = document.querySelector(".car");
+  car.style.top = player.y*10 + "px";
+  
+  setTimeout(changeBackgroundColor, 100);
+}
+function downb() {
+  let road = gamearea.getBoundingClientRect();
+  if(player.start===true && player.y < road.bottom - 200){
+    player.y += player.speed*5;
+    document.getElementById("down").style.backgroundColor = "rgb(186, 186, 186)";
+    document.getElementById("down").style.opacity = "0.6";
+  }
+    
+  let car = document.querySelector(".car");
+  car.style.top = player.y + "px";
+  
+  setTimeout(changeBackgroundColor2, 100);
+}
+function leftb() {
+  let road = gamearea.getBoundingClientRect();
+  if(player.start===true && player.x > 0){
+    player.x -= player.speed*5;
+    // document.getElementById("left").style.backgroundColor = "rgb(186, 186, 186)";
+    document.getElementById("left").style.opacity = "0.6";
+  }
+    
+  let car = document.querySelector(".car");
+  car.style.left = player.x + "px";
+  setTimeout(changeBackgroundColor3, 100);
+}
+function rightb() {
+  let road = gamearea.getBoundingClientRect();
+  if(player.start===true && player.x < road.width - 100){
+    player.x += player.speed*5;
+    // document.getElementById("right").style.backgroundColor = "rgb(186, 186, 186)";
+    document.getElementById("right").style.opacity = "0.6";
+  }
+    
+  let car = document.querySelector(".car");
+  car.style.left = player.x + "px";
+  setTimeout(changeBackgroundColor4, 100);
+}
